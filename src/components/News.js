@@ -11,7 +11,7 @@ export default class News extends Component {
 
   async componentDidMount() {
     console.log("cdm");
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=0c94919ccb1b4a50a9dde8f023eb5bfe&page=1&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=0c94919ccb1b4a50a9dde8f023eb5bfe&page=1&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parseData = await data.json();
@@ -25,7 +25,11 @@ export default class News extends Component {
 
   handlePreviosClick = async () => {
     console.log("Previous");
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=0c94919ccb1b4a50a9dde8f023eb5bfe&page=${
+    let url = `https://newsapi.org/v2/top-headlines?country=${
+      this.props.country
+    }&category=${
+      this.props.category
+    }&apiKey=0c94919ccb1b4a50a9dde8f023eb5bfe&page=${
       this.state.page - 1
     }&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
@@ -40,7 +44,11 @@ export default class News extends Component {
   handleNextClick = async () => {
     console.log("Next");
 
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=0c94919ccb1b4a50a9dde8f023eb5bfe&page=${
+    let url = `https://newsapi.org/v2/top-headlines?country=${
+      this.props.country
+    }&category=${
+      this.props.category
+    }&apiKey=0c94919ccb1b4a50a9dde8f023eb5bfe&page=${
       this.state.page + 1
     }&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
@@ -60,26 +68,27 @@ export default class News extends Component {
         <h1 className="text-center">NewsMonkey - Top Headlines</h1>
         {this.state.loading && <Spinner />}
         <div className="row">
-          {!this.state.loading && this.state.articles.map((element) => {
-            return (
-              <div key={element.url} className="col-md-4 ">
-                <NewsItems
-                  title={element.title ? element.title.slice(0, 45) : " "}
-                  description={
-                    element.description
-                      ? element.description.slice(0, 88)
-                      : "  "
-                  }
-                  imgUrl={
-                    element.urlToImage
-                      ? element.urlToImage
-                      : "https://static.tnn.in/thumb/msid-98720978,updatedat-1679022949905,width-1280,height-720,resizemode-75/98720978.jpg"
-                  }
-                  newsUrl={element.url ? element.url : ""}
-                />
-              </div>
-            );
-          })}
+          {!this.state.loading &&
+            this.state.articles.map((element) => {
+              return (
+                <div key={element.url} className="col-md-4 ">
+                  <NewsItems
+                    title={element.title ? element.title : " "}
+                    description={
+                      element.description
+                        ? element.description
+                        : "  "
+                    }
+                    imgUrl={
+                      element.urlToImage
+                        ? element.urlToImage
+                        : "https://static.tnn.in/thumb/msid-98720978,updatedat-1679022949905,width-1280,height-720,resizemode-75/98720978.jpg"
+                    }
+                    newsUrl={element.url ? element.url : ""}
+                  />
+                </div>
+              );
+            })}
         </div>
         <div className="container d-flex justify-content-between ">
           <button
