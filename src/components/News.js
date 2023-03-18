@@ -85,6 +85,9 @@ export default class News extends Component {
                         : "https://static.tnn.in/thumb/msid-98720978,updatedat-1679022949905,width-1280,height-720,resizemode-75/98720978.jpg"
                     }
                     newsUrl={element.url ? element.url : ""}
+                    author = {element.author ? element.author : "... "}
+                    date = {element.publishedAt ? element.publishedAt : "... "}
+                    source = {element.source.name ? element.source.name : " .. "}
                   />
                 </div>
               );
