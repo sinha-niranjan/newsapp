@@ -9,9 +9,10 @@ export default class News extends Component {
     this.state = { articles: [], loading: false, page: 1 };
   }
 
-  async componentDidMount() {
-    console.log("cdm");
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=0c94919ccb1b4a50a9dde8f023eb5bfe&page=1&pageSize=${this.props.pageSize}`;
+
+
+  async updateNews() {
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=0c94919ccb1b4a50a9dde8f023eb5bfe&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parseData = await data.json();
@@ -23,43 +24,17 @@ export default class News extends Component {
     });
   }
 
+  async componentDidMount() {
+    this.updateNews();
+  }
+
   handlePreviosClick = async () => {
-    console.log("Previous");
-    let url = `https://newsapi.org/v2/top-headlines?country=${
-      this.props.country
-    }&category=${
-      this.props.category
-    }&apiKey=0c94919ccb1b4a50a9dde8f023eb5bfe&page=${
-      this.state.page - 1
-    }&pageSize=${this.props.pageSize}`;
-    this.setState({ loading: true });
-    let data = await fetch(url);
-    let parseData = await data.json();
-    this.setState({
-      articles: parseData.articles,
-      page: this.state.page - 1,
-      loading: false,
-    });
+    this.setState({ page: this.state.page - 1 });
+    this.updateNews();
   };
   handleNextClick = async () => {
-    console.log("Next");
-
-    let url = `https://newsapi.org/v2/top-headlines?country=${
-      this.props.country
-    }&category=${
-      this.props.category
-    }&apiKey=0c94919ccb1b4a50a9dde8f023eb5bfe&page=${
-      this.state.page + 1
-    }&pageSize=${this.props.pageSize}`;
-    this.setState({ loading: true });
-    let data = await fetch(url);
-    let parseData = await data.json();
-    console.log("next");
-    this.setState({
-      articles: parseData.articles,
-      page: this.state.page + 1,
-      loading: false,
-    });
+    this.setState({ page: this.state.page + 1 });
+    this.updateNews();
   };
 
   render() {
@@ -75,9 +50,7 @@ export default class News extends Component {
                   <NewsItems
                     title={element.title ? element.title : " "}
                     description={
-                      element.description
-                        ? element.description
-                        : "  "
+                      element.description ? element.description : "  "
                     }
                     imgUrl={
                       element.urlToImage
@@ -85,9 +58,9 @@ export default class News extends Component {
                         : "https://static.tnn.in/thumb/msid-98720978,updatedat-1679022949905,width-1280,height-720,resizemode-75/98720978.jpg"
                     }
                     newsUrl={element.url ? element.url : ""}
-                    author = {element.author ? element.author : "... "}
-                    date = {element.publishedAt ? element.publishedAt : "... "}
-                    source = {element.source.name ? element.source.name : " .. "}
+                    author={element.author ? element.author : "... "}
+                    date={element.publishedAt ? element.publishedAt : "... "}
+                    source={element.source.name ? element.source.name : " .. "}
                   />
                 </div>
               );
