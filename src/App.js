@@ -39,7 +39,7 @@ const App = () => {
               category="general"
             />
           </Route>
-          <Route exact path="/Science">
+          <Route exact path="/science">
             <News
               setProgress={setProgress}
               apiKey={apiKey}
@@ -49,7 +49,7 @@ const App = () => {
               category="science"
             />
           </Route>
-          <Route exact path="/Business">
+          <Route exact path="/business">
             <News
               setProgress={setProgress}
               apiKey={apiKey}
@@ -59,7 +59,7 @@ const App = () => {
               category="business"
             />
           </Route>
-          <Route exact path="/Entertainment">
+          <Route exact path="/entertainment">
             <News
               setProgress={setProgress}
               apiKey={apiKey}
@@ -69,7 +69,7 @@ const App = () => {
               category="entertainment"
             />
           </Route>
-          <Route exact path="/General">
+          <Route exact path="/general">
             <News
               setProgress={setProgress}
               apiKey={apiKey}
@@ -79,7 +79,7 @@ const App = () => {
               category="general"
             />
           </Route>
-          <Route exact path="/Health">
+          <Route exact path="/health">
             <News
               setProgress={setProgress}
               apiKey={apiKey}
@@ -89,7 +89,7 @@ const App = () => {
               category="health"
             />
           </Route>
-          <Route exact path="/Sports">
+          <Route exact path="/sports">
             <News
               setProgress={setProgress}
               apiKey={apiKey}
@@ -99,7 +99,7 @@ const App = () => {
               category="sports"
             />
           </Route>
-          <Route exact path="/Technology">
+          <Route exact path="/technology">
             <News
               setProgress={setProgress}
               apiKey={apiKey}

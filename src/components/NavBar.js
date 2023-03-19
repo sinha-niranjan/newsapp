@@ -29,37 +29,37 @@ const NavBar = () => {
               </li>
 
               <li className="nav-item">
-                <Link className="nav-link" to="/Business">
+                <Link className="nav-link" to="/business">
                   business
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Entertainment">
+                <Link className="nav-link" to="/entertainment">
                   entertainment
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/General">
+                <Link className="nav-link" to="/general">
                   general
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Health">
+                <Link className="nav-link" to="/health">
                   health
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Science">
+                <Link className="nav-link" to="/science">
                   science
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Sports">
+                <Link className="nav-link" to="/sports">
                   sports
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Technology">
+                <Link className="nav-link" to="/technology">
                   technology
                 </Link>
               </li>
