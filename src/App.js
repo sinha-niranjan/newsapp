@@ -29,6 +29,16 @@ const App = () => {
         <NavBar />
         <LoadingBar height={3} color="#f11946" progress={progress} />
         <Switch>
+          <Route exact path="/">
+            <News
+              setProgress={setProgress}
+              apiKey={apiKey}
+              key="home"
+              pageSize={pageSize}
+              country="in"
+              category="general"
+            />
+          </Route>
           <Route exact path="/Science">
             <News
               setProgress={setProgress}

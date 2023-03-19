@@ -6,7 +6,7 @@ const NavBar = () => {
     <div>
       <nav className="navbar fixed-top navbar-expand-lg bg-dark navbar-dark">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="#">
+          <Link className="navbar-brand" to="/">
             NewMonkey
           </Link>
           <button
